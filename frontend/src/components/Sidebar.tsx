@@ -48,47 +48,75 @@ export default function Sidebar() {
 
       {/* Seed */}
       <div>
-        <label className="text-xs text-gray-400">种子: {store.seed}</label>
-        <div className="flex gap-2 mt-1">
+        <label className="text-xs text-gray-400">种子</label>
+        <div className="flex gap-2 mt-1 items-center">
           <input type="range" min={0} max={99999} value={store.seed}
             onChange={e => store.setParam('seed', Number(e.target.value))} className="flex-1 accent-indigo-500" />
+          <input type="number" min={0} max={99999} step={1} value={store.seed}
+            onChange={e => store.setParam('seed', Math.min(99999, Math.max(0, Number(e.target.value) || 0)))}
+            className="w-20 px-2 py-1 text-xs bg-gray-800 border border-gray-600 rounded text-right" />
           <button onClick={() => store.randomSeed()} className="px-2 bg-indigo-600 rounded text-xs">🎲</button>
         </div>
       </div>
 
       {/* Iterations */}
       <div>
-        <label className="text-xs text-gray-400">迭代数: {store.iterations}</label>
-        <input type="range" min={10} max={500} step={10} value={store.iterations}
-          onChange={e => store.setParam('iterations', Number(e.target.value))} className="w-full accent-purple-500" />
+        <label className="text-xs text-gray-400">迭代数</label>
+        <div className="flex gap-2 mt-1 items-center">
+          <input type="range" min={10} max={500} step={10} value={store.iterations}
+            onChange={e => store.setParam('iterations', Number(e.target.value))} className="flex-1 accent-purple-500" />
+          <input type="number" min={10} max={500} step={10} value={store.iterations}
+            onChange={e => store.setParam('iterations', Math.min(500, Math.max(10, Number(e.target.value) || 10)))}
+            className="w-20 px-2 py-1 text-xs bg-gray-800 border border-gray-600 rounded text-right" />
+        </div>
       </div>
 
       {/* Scale */}
       <div>
-        <label className="text-xs text-gray-400">缩放: {store.scale.toFixed(2)}</label>
-        <input type="range" min={0.1} max={3} step={0.1} value={store.scale}
-          onChange={e => store.setParam('scale', Number(e.target.value))} className="w-full accent-green-500" />
+        <label className="text-xs text-gray-400">缩放</label>
+        <div className="flex gap-2 mt-1 items-center">
+          <input type="range" min={0.1} max={3} step={0.1} value={store.scale}
+            onChange={e => store.setParam('scale', Number(e.target.value))} className="flex-1 accent-green-500" />
+          <input type="number" min={0.1} max={3} step={0.1} value={store.scale}
+            onChange={e => store.setParam('scale', Math.min(3, Math.max(0.1, Number(e.target.value) || 0.1)))}
+            className="w-20 px-2 py-1 text-xs bg-gray-800 border border-gray-600 rounded text-right" />
+        </div>
       </div>
 
       {/* Rotation */}
       <div>
-        <label className="text-xs text-gray-400">旋转: {store.rotation}°</label>
-        <input type="range" min={0} max={360} step={5} value={store.rotation}
-          onChange={e => store.setParam('rotation', Number(e.target.value))} className="w-full accent-yellow-500" />
+        <label className="text-xs text-gray-400">旋转 (°)</label>
+        <div className="flex gap-2 mt-1 items-center">
+          <input type="range" min={0} max={360} step={5} value={store.rotation}
+            onChange={e => store.setParam('rotation', Number(e.target.value))} className="flex-1 accent-yellow-500" />
+          <input type="number" min={0} max={360} step={5} value={store.rotation}
+            onChange={e => store.setParam('rotation', Math.min(360, Math.max(0, Number(e.target.value) || 0)))}
+            className="w-20 px-2 py-1 text-xs bg-gray-800 border border-gray-600 rounded text-right" />
+        </div>
       </div>
 
       {/* Stroke */}
       <div>
-        <label className="text-xs text-gray-400">描边: {store.strokeWidth.toFixed(1)}</label>
-        <input type="range" min={0.5} max={5} step={0.5} value={store.strokeWidth}
-          onChange={e => store.setParam('strokeWidth', Number(e.target.value))} className="w-full accent-orange-500" />
+        <label className="text-xs text-gray-400">描边</label>
+        <div className="flex gap-2 mt-1 items-center">
+          <input type="range" min={0.5} max={5} step={0.5} value={store.strokeWidth}
+            onChange={e => store.setParam('strokeWidth', Number(e.target.value))} className="flex-1 accent-orange-500" />
+          <input type="number" min={0.5} max={5} step={0.5} value={store.strokeWidth}
+            onChange={e => store.setParam('strokeWidth', Math.min(5, Math.max(0.5, Number(e.target.value) || 0.5)))}
+            className="w-20 px-2 py-1 text-xs bg-gray-800 border border-gray-600 rounded text-right" />
+        </div>
       </div>
 
       {/* Opacity */}
       <div>
-        <label className="text-xs text-gray-400">透明度: {store.opacity.toFixed(2)}</label>
-        <input type="range" min={0.1} max={1} step={0.05} value={store.opacity}
-          onChange={e => store.setParam('opacity', Number(e.target.value))} className="w-full accent-pink-500" />
+        <label className="text-xs text-gray-400">透明度</label>
+        <div className="flex gap-2 mt-1 items-center">
+          <input type="range" min={0.1} max={1} step={0.05} value={store.opacity}
+            onChange={e => store.setParam('opacity', Number(e.target.value))} className="flex-1 accent-pink-500" />
+          <input type="number" min={0.1} max={1} step={0.05} value={store.opacity}
+            onChange={e => store.setParam('opacity', Math.min(1, Math.max(0.1, Number(e.target.value) || 0.1)))}
+            className="w-20 px-2 py-1 text-xs bg-gray-800 border border-gray-600 rounded text-right" />
+        </div>
       </div>
 
       {/* Export */}
